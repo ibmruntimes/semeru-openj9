@@ -448,6 +448,13 @@ typedef struct jvmtiGcp_translation {
 		} \
 	} while (0)
 
+#define ENSURE_JCLASS_VALID(var) \
+	do { \
+		if (((var) == NULL) || (NULL == *((j9object_t *)(var))) || (UDATA_MAX == *((UDATA *)(var)))) { \
+			JVMTI_ERROR(JVMTI_ERROR_INVALID_CLASS); \
+		} \
+	} while (0)
+
 #define ENSURE_JNI_OBJECT_NON_NULL(var, err) \
 	do { \
 		if (((var) == NULL) || (*((j9object_t *)(var)) == NULL)) { \
@@ -456,7 +463,6 @@ typedef struct jvmtiGcp_translation {
 	} while (0)
 
 #define ENSURE_JOBJECT_NON_NULL(var) ENSURE_JNI_OBJECT_NON_NULL((var), JVMTI_ERROR_INVALID_OBJECT)
-#define ENSURE_JCLASS_NON_NULL(var) ENSURE_JNI_OBJECT_NON_NULL((var), JVMTI_ERROR_INVALID_CLASS)
 #define ENSURE_JTHREADGROUP_NON_NULL(var) ENSURE_JNI_OBJECT_NON_NULL((var), JVMTI_ERROR_INVALID_THREAD_GROUP)
 #define ENSURE_JOBJECT_NON_NULL(var) ENSURE_JNI_OBJECT_NON_NULL((var), JVMTI_ERROR_INVALID_OBJECT)
 
@@ -516,7 +522,7 @@ typedef struct jvmtiGcp_translation {
 #define ENSURE_JMETHODID_VALID(var)
 #define ENSURE_JFIELDID_VALID(var)
 #define ENSURE_JOBJECT_NON_NULL(var)
-#define ENSURE_JCLASS_NON_NULL(var)
+#define ENSURE_JCLASS_VALID(var)
 #define ENSURE_JTHREADGROUP_NON_NULL(var)
 #define ENSURE_VALID_HEAP_OBJECT_FILTER(var)
 #define ENSURE_MONITOR_NON_NULL(var)

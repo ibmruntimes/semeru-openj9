@@ -338,7 +338,7 @@ jvmtiGetClassSignature(jvmtiEnv* env,
 
 		ENSURE_PHASE_START_OR_LIVE(env);
 
-		ENSURE_JCLASS_NON_NULL(klass);
+		ENSURE_JCLASS_VALID(klass);
 
 		clazz = J9VM_J9CLASS_FROM_JCLASS(currentThread, klass);
 
@@ -469,7 +469,7 @@ jvmtiGetClassStatus(jvmtiEnv* env,
 
 		ENSURE_PHASE_START_OR_LIVE(env);
 
-		ENSURE_JCLASS_NON_NULL(klass);
+		ENSURE_JCLASS_VALID(klass);
 		ENSURE_NON_NULL(status_ptr);
 
 		clazz = J9VM_J9CLASS_FROM_JCLASS(currentThread, klass);
@@ -508,7 +508,7 @@ jvmtiGetSourceFileName(jvmtiEnv* env,
 		ENSURE_PHASE_START_OR_LIVE(env);
 		ENSURE_CAPABILITY(env, can_get_source_file_name);
 
-		ENSURE_JCLASS_NON_NULL(klass);
+		ENSURE_JCLASS_VALID(klass);
 		ENSURE_NON_NULL(source_name_ptr);
 
 		/* Assume that having the capability means that the debug info server is active */
@@ -553,7 +553,7 @@ jvmtiGetClassModifiers(jvmtiEnv* env,
 
 		ENSURE_PHASE_START_OR_LIVE(env);
 
-		ENSURE_JCLASS_NON_NULL(klass);
+		ENSURE_JCLASS_VALID(klass);
 		ENSURE_NON_NULL(modifiers_ptr);
 
 		/* Primitive classes have the correct modifiers, so no special processing needs to be done */
@@ -619,7 +619,7 @@ jvmtiGetClassMethods(jvmtiEnv* env,
 
 		ENSURE_PHASE_START_OR_LIVE(env);
 
-		ENSURE_JCLASS_NON_NULL(klass);
+		ENSURE_JCLASS_VALID(klass);
 		ENSURE_NON_NULL(method_count_ptr);
 		ENSURE_NON_NULL(methods_ptr);
 
@@ -691,7 +691,7 @@ jvmtiGetClassFields(jvmtiEnv* env,
 
 		ENSURE_PHASE_START_OR_LIVE(env);
 
-		ENSURE_JCLASS_NON_NULL(klass);
+		ENSURE_JCLASS_VALID(klass);
 		ENSURE_NON_NULL(field_count_ptr);
 		ENSURE_NON_NULL(fields_ptr);
 
@@ -771,7 +771,7 @@ jvmtiGetImplementedInterfaces(jvmtiEnv* env,
 
 		ENSURE_PHASE_START_OR_LIVE(env);
 
-		ENSURE_JCLASS_NON_NULL(klass);
+		ENSURE_JCLASS_VALID(klass);
 		ENSURE_NON_NULL(interface_count_ptr);
 		ENSURE_NON_NULL(interfaces_ptr);
 
@@ -842,7 +842,7 @@ jvmtiIsInterface(jvmtiEnv* env,
 
 		ENSURE_PHASE_START_OR_LIVE(env);
 
-		ENSURE_JCLASS_NON_NULL(klass);
+		ENSURE_JCLASS_VALID(klass);
 		ENSURE_NON_NULL(is_interface_ptr);
 
 		clazz = J9VM_J9CLASS_FROM_JCLASS(currentThread, klass);
@@ -879,7 +879,7 @@ jvmtiIsArrayClass(jvmtiEnv* env,
 
 		ENSURE_PHASE_START_OR_LIVE(env);
 
-		ENSURE_JCLASS_NON_NULL(klass);
+		ENSURE_JCLASS_VALID(klass);
 		ENSURE_NON_NULL(is_array_class_ptr);
 
 		clazz = J9VM_J9CLASS_FROM_JCLASS(currentThread, klass);
@@ -917,7 +917,7 @@ jvmtiGetClassLoader(jvmtiEnv* env,
 
 		ENSURE_PHASE_START_OR_LIVE(env);
 
-		ENSURE_JCLASS_NON_NULL(klass);
+		ENSURE_JCLASS_VALID(klass);
 		ENSURE_NON_NULL(classloader_ptr);
 
 		clazz = J9VM_J9CLASS_FROM_JCLASS(currentThread, klass);
@@ -962,7 +962,7 @@ jvmtiGetSourceDebugExtension(jvmtiEnv* env,
 		ENSURE_PHASE_START_OR_LIVE(env);
 		ENSURE_CAPABILITY(env, can_get_source_debug_extension);
 
-		ENSURE_JCLASS_NON_NULL(klass);
+		ENSURE_JCLASS_VALID(klass);
 		ENSURE_NON_NULL(source_debug_extension_ptr);
 
 		/* Assume that having the capability means that the debug info server is active */
@@ -1699,7 +1699,7 @@ jvmtiIsModifiableClass(jvmtiEnv* env,
 
 		ENSURE_PHASE_START_OR_LIVE(env);
 
-		ENSURE_JCLASS_NON_NULL(klass);
+		ENSURE_JCLASS_VALID(klass);
 		ENSURE_JCLASS(currentThread, klass);
 		ENSURE_NON_NULL(is_modifiable_class_ptr);
 
@@ -1752,7 +1752,7 @@ jvmtiGetClassVersionNumbers(jvmtiEnv* env,
 
 		ENSURE_PHASE_START_OR_LIVE(env);
 
-		ENSURE_JCLASS_NON_NULL(klass);
+		ENSURE_JCLASS_VALID(klass);
 		ENSURE_NON_NULL(minor_version_ptr);
 		ENSURE_NON_NULL(major_version_ptr);
 		ENSURE_JCLASS(currentThread, klass);
@@ -1878,7 +1878,7 @@ jvmtiGetConstantPool(jvmtiEnv* env,
 		ENSURE_PHASE_START_OR_LIVE(env);
 		ENSURE_CAPABILITY(env, can_get_constant_pool);
 
-		ENSURE_JCLASS_NON_NULL(klass);
+		ENSURE_JCLASS_VALID(klass);
 		ENSURE_JCLASS(currentThread, klass);
 		ENSURE_NON_NULL(constant_pool_count_ptr);
 		ENSURE_NON_NULL(constant_pool_byte_count_ptr);

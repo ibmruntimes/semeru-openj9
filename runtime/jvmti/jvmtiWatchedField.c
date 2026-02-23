@@ -126,7 +126,7 @@ setFieldWatch(jvmtiEnv* env,
 
 		vm->internalVMFunctions->internalEnterVMFromJNI(currentThread);
 
-		ENSURE_JCLASS_NON_NULL(klass);
+		ENSURE_JCLASS_VALID(klass);
 		ENSURE_JFIELDID_VALID(field);
 
 		vm->internalVMFunctions->acquireExclusiveVMAccess(currentThread);
@@ -230,7 +230,7 @@ clearFieldWatch(jvmtiEnv* env,
 
 		vm->internalVMFunctions->internalEnterVMFromJNI(currentThread);
 
-		ENSURE_JCLASS_NON_NULL(klass);
+		ENSURE_JCLASS_VALID(klass);
 		ENSURE_JFIELDID_VALID(field);
 
 		vm->internalVMFunctions->acquireExclusiveVMAccess(currentThread);
