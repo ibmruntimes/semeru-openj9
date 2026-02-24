@@ -52,7 +52,7 @@ jvmtiGetFieldName(jvmtiEnv* env,
 
 		ENSURE_PHASE_START_OR_LIVE(env);
 
-		ENSURE_JCLASS_NON_NULL(klass);
+		ENSURE_JCLASS_VALID(klass);
 		ENSURE_JFIELDID_VALID(field);
 
 		romFieldShape = ((J9JNIFieldID *) field)->field;
@@ -148,7 +148,7 @@ jvmtiGetFieldDeclaringClass(jvmtiEnv* env,
 
 		ENSURE_PHASE_START_OR_LIVE(env);
 
-		ENSURE_JCLASS_NON_NULL(klass);
+		ENSURE_JCLASS_VALID(klass);
 		ENSURE_JFIELDID_VALID(field);
 		ENSURE_NON_NULL(declaring_class_ptr);
 
@@ -187,7 +187,7 @@ jvmtiGetFieldModifiers(jvmtiEnv* env,
 
 		ENSURE_PHASE_START_OR_LIVE(env);
 
-		ENSURE_JCLASS_NON_NULL(klass);
+		ENSURE_JCLASS_VALID(klass);
 		ENSURE_JFIELDID_VALID(field);
 		ENSURE_NON_NULL(modifiers_ptr);
 
@@ -229,7 +229,7 @@ jvmtiIsFieldSynthetic(jvmtiEnv* env,
 		ENSURE_PHASE_START_OR_LIVE(env);
 		ENSURE_CAPABILITY(env, can_get_synthetic_attribute);
 
-		ENSURE_JCLASS_NON_NULL(klass);
+		ENSURE_JCLASS_VALID(klass);
 		ENSURE_JFIELDID_VALID(field);
 		ENSURE_NON_NULL(is_synthetic_ptr);
 

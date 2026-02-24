@@ -133,7 +133,7 @@ jvmtiIterateOverInstancesOfClass(jvmtiEnv* env,
 		ENSURE_PHASE_LIVE(env);
 		ENSURE_CAPABILITY(env, can_tag_objects);
 
-		ENSURE_JCLASS_NON_NULL(klass);
+		ENSURE_JCLASS_VALID(klass);
 		ENSURE_VALID_HEAP_OBJECT_FILTER(object_filter);
 		ENSURE_NON_NULL(heap_object_callback);
 
