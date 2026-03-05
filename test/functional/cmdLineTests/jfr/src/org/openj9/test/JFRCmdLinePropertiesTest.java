@@ -31,5 +31,17 @@ public class JFRCmdLinePropertiesTest {
 		System.out.println("filename=" + (filename != null ? filename : "null"));
 		System.out.println("delay=" + (delayNanos != null ? delayNanos + " nanoseconds" : "null"));
 		System.out.println("duration=" + (durationNanos != null ? durationNanos + " nanoseconds" : "null"));
+
+		// Run workload to keep application alive for 2 minutes
+		System.out.println("Starting workload for 2 minutes...");
+		long startTime = System.currentTimeMillis();
+
+		// Create WorkLoad with parameters tuned for ~2 minute execution
+		// numberOfThreads=10, sizeOfNumberList=5000, repeats=20
+		WorkLoad workload = new WorkLoad(10, 5000, 20);
+		workload.runWork();
+
+		long totalTime = System.currentTimeMillis() - startTime;
+		System.out.println("Workload completed. Total time: " + (totalTime / 1000) + " seconds");
 	}
 }
