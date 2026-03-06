@@ -36,13 +36,15 @@
 	<property name="src" location="${PROJECT_ROOT}/src" />
 	<property name="TestUtilities" location="../../TestUtilities/src"/>
 	<property name="build" location="${PROJECT_ROOT}/bin" />
+	<property name="LIB" value="testng" />
+	<import file="${TEST_ROOT}/TKG/scripts/getDependencies.xml" />
 
 	<target name="init">
 		<mkdir dir="${DEST}" />
 		<mkdir dir="${build}" />
 	</target>
 
-	<target name="compile" depends="init" description="Using java ${JDK_VERSION} to compile the source ">
+	<target name="compile" depends="init,getDependentLibs" description="Using java ${JDK_VERSION} to compile the source ">
 		<echo>Ant version is ${ant.version}</echo>
 		<echo>============COMPILER SETTINGS============</echo>
 		<echo>===fork:                         yes</echo>
@@ -69,7 +71,7 @@
 			<fileset dir="${PROJECT_ROOT}" includes="*.mk" />
 		</copy>
 	</target>
-	
+
 	<target name="clean" depends="dist" description="clean up">
 		<!-- Delete the ${build} directory trees -->
 		<delete dir="${build}" />
