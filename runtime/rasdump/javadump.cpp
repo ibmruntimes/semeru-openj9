@@ -394,23 +394,23 @@ private :
 	int64_t           _DumpStart;
 
 	/* Static declared data */
-	static const unsigned int _MaximumExceptionNameLength;
+	static const U_32 _MaximumExceptionNameLength;
 	static const U_32 _MaximumFormattedTracePointLength;
-	static const unsigned int _MaximumCommandLineLength;
-	static const unsigned int _MaximumTimeStampLength;
-	static const unsigned int _MaximumGPValueLength;
-	static const unsigned int _MaximumJavaStackDepth;
+	static const U_32 _MaximumCommandLineLength;
+	static const U_32 _MaximumTimeStampLength;
+	static const U_32 _MaximumGPValueLength;
+	static const U_32 _MaximumJavaStackDepth;
 	static const int _MaximumGCHistoryLines;
 	static const int _MaximumMonitorInfosPerThread;
 };
 
 /* Static declared data instantiation */
-const unsigned int JavaCoreDumpWriter::_MaximumExceptionNameLength(128);
-const unsigned int JavaCoreDumpWriter::_MaximumFormattedTracePointLength(512);
-const unsigned int JavaCoreDumpWriter::_MaximumCommandLineLength(512);
-const unsigned int JavaCoreDumpWriter::_MaximumTimeStampLength(30);
-const unsigned int JavaCoreDumpWriter::_MaximumGPValueLength(512);
-const unsigned int JavaCoreDumpWriter::_MaximumJavaStackDepth(100000);
+const U_32 JavaCoreDumpWriter::_MaximumExceptionNameLength(128);
+const U_32 JavaCoreDumpWriter::_MaximumFormattedTracePointLength(2048);
+const U_32 JavaCoreDumpWriter::_MaximumCommandLineLength(512);
+const U_32 JavaCoreDumpWriter::_MaximumTimeStampLength(30);
+const U_32 JavaCoreDumpWriter::_MaximumGPValueLength(512);
+const U_32 JavaCoreDumpWriter::_MaximumJavaStackDepth(100000);
 const int JavaCoreDumpWriter::_MaximumGCHistoryLines(2000);
 const int JavaCoreDumpWriter::_MaximumMonitorInfosPerThread(32);
 
