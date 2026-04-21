@@ -161,12 +161,7 @@ public:
 
       @return offset to the beginning of data
    */
-   uint32_t readData(uint32_t dataSize)
-      {
-      char* data = _curPtr;
-      _curPtr += dataSize; // Advance cursor
-      return offset(data); // Return offset before the advance
-      }
+   uint32_t readData(uint32_t dataSize);
 
    void clear() { _curPtr = _storage; }
 

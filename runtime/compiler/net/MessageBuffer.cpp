@@ -20,11 +20,12 @@
  * SPDX-License-Identifier: EPL-2.0 OR Apache-2.0 OR GPL-2.0-only WITH Classpath-exception-2.0 OR GPL-2.0-only WITH OpenJDK-assembly-exception-1.0
  *******************************************************************************/
 
-#include "net/MessageBuffer.hpp"
-#include "infra/CriticalSection.hpp"
-#include "env/VerboseLog.hpp"
-#include "control/Options.hpp"
 #include <cstring>
+#include "control/Options.hpp"
+#include "env/VerboseLog.hpp"
+#include "infra/CriticalSection.hpp"
+#include "net/MessageBuffer.hpp"
+#include "net/StreamExceptions.hpp"
 
 namespace JITServer
 {
@@ -113,6 +114,15 @@ MessageBuffer::writeData(const void *dataStart, uint32_t dataSize, uint8_t paddi
    memcpy(_curPtr, dataStart, dataSize);
    _curPtr += dataSize + paddingSize;
    return offset(data);
+   }
+
+uint32_t MessageBuffer::readData(uint32_t dataSize)
+   {
+   if (_curPtr + dataSize > _storage + _capacity)
+      throw JITServer::StreamFailure("readData exceeds buffer bounds");
+   char *data = _curPtr;
+   _curPtr += dataSize; // Advance cursor
+   return offset(data); // Return offset before the advance
    }
 
 uint8_t
